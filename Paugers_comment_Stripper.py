@@ -6,7 +6,6 @@ from langdetect import detect
 import re
 from pathlib import Path, PureWindowsPath
 import json
-from dotenv import load_dotenv
 import os
 from os.path import expanduser
 from pathlib import Path
@@ -17,7 +16,6 @@ class CommentStripper:
 
 
   def __init__(self,video_id,API_KEY):
-    load_dotenv()
     self.api_service_name = "youtube"
     self.api_version = "v3"
     self.DEVELOPER_KEY = API_KEY
