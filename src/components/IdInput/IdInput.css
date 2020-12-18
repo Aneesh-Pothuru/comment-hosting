@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Bungee+Inline&display=swap");
+
+input[type=text] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+  }
+
+button {
+    background-color:#CC30B4;
+    border: 1px white;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: "Audiowide";
+    background-image: url('star.gif');
+    border-radius: 8px;
+}
+
+button:hover {
+    background-image: url('button.gif');
+    color: white;
+    transition: background-image 0.5s ease-out;
+}
+
+label{
+    font-size: 20px;
+    font-family: "Audiowide";
+    color: white;
+}
