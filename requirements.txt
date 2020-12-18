@@ -40,7 +40,6 @@ pandas==0.24.2
 pathlib==1.0.1
 pluggy==0.7.1
 protobuf==3.14.0
-py==1.9.0
 scipy==0.13.0b1
 six==1.15.0
 typing==3.7.4.3
