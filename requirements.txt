@@ -16,7 +16,6 @@ Flask==1.1.2
 Flask-Cors==3.0.9
 funcsigs==1.0.2
 future==0.17.1
-futures==3.3.0
 google-api-core==1.23.0
 google-api-python-client==1.12.8
 google-auth==1.24.0
