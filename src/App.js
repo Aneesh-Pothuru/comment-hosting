@@ -57,7 +57,7 @@ class App extends React.Component {
       this.audio.pause();
       this.audio = new Audio(song);
       console.log(this.state);
-      download(comment, this.state.videoId + "video.json", "text/plain");
+      download(JSON.stringify(comment), this.state.videoId + "video.json", "text/plain");
     }).catch(err => {
       console.log(err);
       this.setState({ loading: false });
