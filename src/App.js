@@ -39,16 +39,15 @@ class App extends React.Component {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       mode: 'cors',
-    }).then(response => {
-      console.log(response);
-      response.json();
+    }).then(response =>
+      response.json()
+    ).then(comment => {
+      this.setState({ comments: comment });
+      this.setState({ collectedData: true });
       this.setState({ loading: false });
       this.setState({ storeKey: true });
       this.audio.pause();
       this.audio = new Audio(song);
-    }).then(comment => {
-      this.setState({ comments: comment });
-      this.setState({ collectedData: true });
       console.log(this.state);
     }).catch(err => {
       console.log(err);
