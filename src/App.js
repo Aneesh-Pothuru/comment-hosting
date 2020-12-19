@@ -47,8 +47,9 @@ class App extends React.Component {
       this.audio.pause();
       this.audio = new Audio(song);
     }).then(comment => {
-      this.setState({ comments: comment })
+      this.setState({ comments: comment });
       this.setState({ collectedData: true });
+      console.log(this.state);
     }).catch(err => {
       console.log(err);
       this.setState({ loading: false });
@@ -70,7 +71,7 @@ class App extends React.Component {
               </div>
               <img src={load} className="logo" alt="" />
               {
-                this.state.comments.map(comment => (<h1>{comment.commentId}</h1>))
+                this.state.comments.map(comment => (<h1>HELLO {comment.commentId}</h1>))
               }
             </div> :
             <IdInput
