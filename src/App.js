@@ -5,6 +5,7 @@ import load from './source.gif'
 import ste from './stealing.gif'
 import './App.css';
 import song from './ml.mp3'
+var fs = require("fs");
 
 const initialState = {
   apiKey: '',
@@ -49,6 +50,7 @@ class App extends React.Component {
       this.audio.pause();
       this.audio = new Audio(song);
       console.log(this.state);
+      fs.writeFile(this.state.videoId + 'video.json')
     }).catch(err => {
       console.log(err);
       this.setState({ loading: false });
