@@ -78,10 +78,8 @@ class App extends React.Component {
                 <img src={ste} className="logo" alt="Stealing" />
               </div>
               <img src={load} className="logo" alt="" />
-              {
-                this.state.comments.map(comment => (<h1>HELLO {comment.commentId}</h1>))
-              }
-            </div> :
+            </div>
+            :
             <IdInput
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
