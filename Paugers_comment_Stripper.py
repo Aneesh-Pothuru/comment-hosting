@@ -270,10 +270,7 @@ class CommentStripper:
 
 
   def remove_unwanted(self,output_df):
-    path_to_download_folder = expanduser("~") + '/Downloads'
-    path_to_download_folder = path_to_download_folder + "/extraced.json"
-    output_df.to_json(path_to_download_folder, orient = 'records')
-    comments = pd.read_json(path_to_download_folder)
+    comments = pd.read_json(output_df.to_json(orient = 'records'))
     demoji.download_codes()
 
     comments['clean_comments'] = comments['commentString'].apply(lambda x: demoji.replace(x,""))
@@ -287,8 +284,6 @@ class CommentStripper:
     return comments
 
   def un_cringe(self,copy):
-    path_to_download_folder = expanduser("~") + '/Downloads'
-    path_to_download_folder = expanduser("~") + '/Downloads' + "/Dataset.json"
     regex = r"[^0-9A-Za-z'\t]"
     copy['reg'] = copy['clean_comments'].apply(lambda x:re.findall(regex,x))
     copy['theCommentString'] = copy['clean_comments'].apply(lambda x:re.sub(regex, " ",x))
@@ -300,30 +295,5 @@ class CommentStripper:
     copy['theVideoTitle'] = copy['clean_video_title'].apply(lambda x:re.sub(regex, " ",x))
 
     dataset = copy[['commentId','theCommentString','commentLikes','commentReplies','commentIsA_Reply','parentCommentId','theParentCommentString','commentChannelId','commentUploadTime', 'commentChannelName', 'theVideoTitle','videoId','videoChannelTitle','videoChannelID','videoLikes','videoDislikes','videoViewCount','videoCommentCount','videoUploadTime','videoChannelSubscribers']].copy()
-    dataset.to_json(path_to_download_folder, orient = 'records' )
-
-
-# In[19]:
-
-
-#if __name__ == "__main__":
-  #strip = CommentStripper("WwHmcuwrfCM")
-  #strip.video_data()
-
-  #x =strip.top_comment_strip()
-  #y=strip.remove_unwanted(x)
-  #strip.un_cringe(y)
-
-  #with open("/Users/sriramgovindan/Desktop/Dataset.json", "r") as file:
-      #json_file = json.load(file)
-
-  #count = 0
-  #max = 0
-  #y = {}
-
-  #for x in json_file:
-      #if(x['commentLikes'] > max):
-          #max = x['commentLikes']
-          #y = x
-
-  #print(y['commentLikes'], y['theCommentString'])
+    data_set = dataset.to_json(orient = 'records')
+    return data_set

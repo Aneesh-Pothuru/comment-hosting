@@ -10,7 +10,9 @@ const initialState = {
   apiKey: '',
   videoId: '',
   loading: '',
-  storeKey: false
+  storeKey: false,
+  collectedData: false,
+  comments: []
 }
 
 class App extends React.Component {
@@ -39,10 +41,14 @@ class App extends React.Component {
       mode: 'cors',
     }).then(response => {
       console.log(response);
+      response.json();
       this.setState({ loading: false });
       this.setState({ storeKey: true });
       this.audio.pause();
       this.audio = new Audio(song);
+    }).then(comment => {
+      this.setState({ comments: comment })
+      this.setState({ collectedData: true });
     }).catch(err => {
       console.log(err);
       this.setState({ loading: false });
