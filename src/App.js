@@ -34,7 +34,7 @@ class App extends React.Component {
     this.setState({ loading: true })
     this.audio.play();
     fetch('https://paugur-comment.herokuapp.com/videoId/' + this.state.videoId + "/" + this.state.apiKey, {
-      method: 'POST',
+      method: 'GET',
       headers: { 'Content-Type': 'application/json' },
       mode: 'cors',
     }).then(response => {

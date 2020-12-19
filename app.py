@@ -14,7 +14,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def index():
     return app.send_static_file('index.html')
 
-@app.route('/videoId/<ID>/<APIKEY>', methods =['POST'])
+@app.route('/videoId/<ID>/<APIKEY>', methods =['GET'])
 def get_comments(ID,APIKEY):
     path_to_download_folder = expanduser("~") + '/Downloads'
     path_to_download_folder = path_to_download_folder + "/Dataset.json"
