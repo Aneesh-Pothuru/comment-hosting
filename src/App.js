@@ -33,7 +33,7 @@ class App extends React.Component {
   onButtonSubmit = () => {
     this.setState({ loading: true })
     this.audio.play();
-    fetch('https://localhost:80/videoId/' + this.state.videoId + "/" + this.state.apiKey, {
+    fetch('https://paugur-comment.herokuapp.com/videoId/' + this.state.videoId + "/" + this.state.apiKey, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       mode: 'cors',
