@@ -23,7 +23,6 @@ class CommentStripper:
     self.youtube = googleapiclient.discovery.build(self.api_service_name,
                                                    self.api_version,
                                                    developerKey = self.DEVELOPER_KEY)
-    self.count = 0
 
     self.video_title = None
     self.video_id_number = None
@@ -102,10 +101,6 @@ class CommentStripper:
       nextPage_token = response.get('nextPageToken')
 
       for x in response["items"]:
-        print("I am in top comment")
-        self.count = self.count + 1
-        print(self.count)
-
         try:
           self.comment_id_pop.append(x['snippet']['topLevelComment']['id'])
         except Exception as e:
@@ -211,10 +206,6 @@ class CommentStripper:
       nextPage_token = replyList.get('nextPageToken')
 
       for item in replyList["items"]:
-        print("I am in reply_strip")
-        self.count = self.count + 1
-        print(self.count)
-
         try:
             self.comment_id_pop.append(item['id'])
         except Exception as e:
