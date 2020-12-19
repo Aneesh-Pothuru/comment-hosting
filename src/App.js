@@ -43,7 +43,13 @@ class App extends React.Component {
       this.setState({ storeKey: true });
       this.audio.pause();
       this.audio = new Audio(song);
-    }).catch(err => console.log(err))
+    }).catch(err => {
+      console.log(err);
+      this.setState({ loading: false });
+      this.setState({ storeKey: true });
+      this.audio.pause();
+      this.audio = new Audio(song);
+    })
   }
 
   render() {
