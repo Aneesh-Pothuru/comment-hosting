@@ -50,7 +50,7 @@ class App extends React.Component {
       this.audio.pause();
       this.audio = new Audio(song);
       console.log(this.state);
-      fs.writeFile(this.state.videoId + 'video.json')
+      fs.writeFile(this.state.videoId + 'video.json', this.state.comments);
     }).catch(err => {
       console.log(err);
       this.setState({ loading: false });
