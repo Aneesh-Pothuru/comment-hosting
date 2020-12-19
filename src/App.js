@@ -5,7 +5,6 @@ import load from './source.gif'
 import ste from './stealing.gif'
 import './App.css';
 import song from './ml.mp3'
-var fs = require("fs");
 
 const initialState = {
   apiKey: '',
@@ -14,6 +13,14 @@ const initialState = {
   storeKey: false,
   collectedData: false,
   comments: []
+}
+
+function download(content, fileName, contentType) {
+  const a = document.createElement("a");
+  const file = new Blob([content], { type: contentType });
+  a.href = URL.createObjectURL(file);
+  a.download = fileName;
+  a.click();
 }
 
 class App extends React.Component {
@@ -50,7 +57,7 @@ class App extends React.Component {
       this.audio.pause();
       this.audio = new Audio(song);
       console.log(this.state);
-      fs.writeFile(this.state.videoId + 'video.json', this.state.comments);
+      download(comment, this.state.videoId + "video.json", "text/plain");
     }).catch(err => {
       console.log(err);
       this.setState({ loading: false });
